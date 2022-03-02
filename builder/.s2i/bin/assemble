@@ -1,0 +1,28 @@
+#!/bin/bash -e
+#
+# S2I assemble script for the 's2i-nginx' image.
+# The 'assemble' script builds your application source so that it is ready to run.
+#
+# For more information refer to the documentation:
+#	https://github.com/openshift/source-to-image/blob/master/docs/builder_image.md
+#
+
+if [[ "$1" == "-h" ]]; then
+	# If the 's2i-nginx' assemble script is executed with '-h' flag,
+	# print the usage.
+	exec /usr/libexec/s2i/usage
+fi
+
+echo "---> Installing dependencies..."
+cd /tmp/src
+npm install
+echo "---> Building application from source..."
+npm run build
+echo "LISTADO DE ARCHIVOS"
+ls -lart
+cp -r /tmp/src/build/* /opt/app-root/src/
+cd /opt/app-root/src/
+echo "lista de copiados"
+ls -lart
+echo "---> Cleaning source and cache..."
+rm -rf /tmp/src/* /opt/app-root/src/.config /opt/app-root/src/.cache /opt/app-root/src/.yarn
