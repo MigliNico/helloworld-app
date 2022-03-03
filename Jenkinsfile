@@ -6,7 +6,7 @@ pipeline {
     stages {
              stage('Clone') {
             steps {
-                 sh "((docker ps -a | grep helloworld_app | wc -l) > 0); then docker rm -f helloworld_app fi"
+                 sh "docker rm -f helloworld_app"
                 git branch: 'main', credentialsId: '438194f2-9c5a-4300-90f4-657e392ca754', url: 'https://github.com/MigliNico/helloworld-app'
             }
         }

@@ -1,4 +1,4 @@
-Hello-world App.
+Hello-world App
 Esta aplicacion esta realizada con React y desplegada en un Nginx. 
 
 Todo el pipeline corre sobre un Jenkins local, el cual se levanta de la siguiente manera:
