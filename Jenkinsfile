@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Hello compile!' 
                 dir('/var/jenkins_home/workspace/hello-world/builder') {
-                // sh "docker build -t nginx-builder . "
+                 sh "docker build -t nginx-builder . "
                  
 }
                 dir('/var/jenkins_home') {
